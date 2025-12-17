@@ -5,7 +5,7 @@ const app = document.querySelector<HTMLCanvasElement>('#app')!;
 export const options = app.querySelector<HTMLElement>('#options')!;
 let uiHidden = false;
 
-export const PARAMS = {
+export const params = {
     color: {r: 1, g: 0, b: 0},
     hdr: false,
 };
@@ -14,11 +14,11 @@ const pane = new Pane({
     title: "Options",
     container: options,
 });
-pane.addBinding(PARAMS, 'color', {
+pane.addBinding(params, 'color', {
     picker: 'popup',
     color: {type: 'float'},
 });
-pane.addBinding(PARAMS, 'hdr', {
+pane.addBinding(params, 'hdr', {
     label: 'HDR',
 });
 

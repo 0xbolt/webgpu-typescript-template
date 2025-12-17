@@ -1,4 +1,4 @@
-// @group(0) @binding(0) var<uniform> canvasSize: vec2u;
+@group(0) @binding(0) var<uniform> canvasSize: vec2f;
 
 struct VertexInput {
     @builtin(vertex_index) vertexIndex: u32,
@@ -25,12 +25,11 @@ fn vertexMain(input: VertexInput) -> VertexOutput {
         vec4f(0, 0, 1, 1),
     );
 
-    // let size = min(canvasSize.x, canvasSize.y);
-    // let k = f32(size) / vec2f(canvasSize);
-    let k = 1.0;
+    let size = min(canvasSize.x, canvasSize.y);
+    let k = f32(size) / vec2f(canvasSize);
 
     var output: VertexOutput;
-    output.position = vec4f(vertices[input.vertexIndex] * k, 0, 1);
+    output.position = vec4f(vertices[input.vertexIndex] * 0.5, 0, 1);
     output.color = colors[input.vertexIndex];
     return output;
 }
