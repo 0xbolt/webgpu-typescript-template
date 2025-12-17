@@ -16,9 +16,11 @@ export function observeCanvasResize(canvas: HTMLCanvasElement, device: GPUDevice
             const width = entry.devicePixelContentBoxSize?.[0].inlineSize || entry.contentBoxSize[0].inlineSize * window.devicePixelRatio;
             const height = entry.devicePixelContentBoxSize?.[0].blockSize || entry.contentBoxSize[0].blockSize * window.devicePixelRatio;
             const target = entry.target as HTMLCanvasElement;
-            target.width =  Math.max(1, Math.min(width, device.limits.maxTextureDimension2D));
-            target.height =  Math.max(1, Math.min(height, device.limits.maxTextureDimension2D));
-            callback(width, height);
+            const bufferWidth = Math.max(1, Math.min(width, device.limits.maxTextureDimension2D));
+            const bufferHeight = Math.max(1, Math.min(height, device.limits.maxTextureDimension2D));
+            target.width = bufferWidth;
+            target.height = bufferHeight;
+            callback(bufferWidth, bufferHeight);
         }
     });
     observer.observe(canvas);

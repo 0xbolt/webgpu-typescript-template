@@ -8,6 +8,7 @@ let uiHidden = false;
 export const params = {
     color: {r: 1, g: 0, b: 0},
     hdr: false,
+    brightness: 1.0,
 };
 
 const pane = new Pane({
@@ -21,6 +22,7 @@ pane.addBinding(params, 'color', {
 pane.addBinding(params, 'hdr', {
     label: 'HDR',
 });
+export const brightnessBinding = pane.addBinding(params, 'brightness');
 
 export var stats = new Stats();
 stats.showPanel(1);

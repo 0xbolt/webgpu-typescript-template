@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: '/webgpu-typescript-template/',
+    base: '/webgpu-typescript-template/',
 });
